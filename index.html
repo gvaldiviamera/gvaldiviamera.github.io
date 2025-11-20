@@ -1,185 +1,416 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <title>Gustavo Valdivia-Mera - Theoretical Physicist</title>
 
-  <!-- Estilo muy simple, tipo old-school -->
   <style>
-    body {
-      font-family: "Times New Roman", serif;
-      background-color: #ffffff;
-      color: #000000;
+    /* ======= ESTILO GENERAL (sobrio / minimalista) ======= */
+    :root {
+      --bg-main: #f5f5f5;
+      --bg-header: #111111;
+      --text-main: #111111;
+      --text-muted: #555555;
+      --accent: #e5e5e5;
+      --link: #2563eb;
+      --link-hover: #1d4ed8;
+    }
+
+    * {
+      box-sizing: border-box;
       margin: 0;
       padding: 0;
     }
 
-    #container {
-      width: 800px;
-      margin: 0 auto;
-      padding: 20px;
+    body {
+      font-family: "Times New Roman", serif;
+      background-color: var(--bg-main);
+      color: var(--text-main);
     }
 
-    h1, h2 {
-      text-align: center;
-      font-weight: normal;
-      margin: 0.2em 0;
-    }
-
-    hr {
-      margin: 1em 0;
-    }
-
-    .nav {
-      text-align: center;
-      font-size: 0.95em;
-      margin-bottom: 0.5em;
-    }
-
-    .nav a {
-      margin: 0 8px;
+    a {
+      color: var(--link);
       text-decoration: none;
-      color: #0000cc;
     }
 
-    .nav a:hover {
+    a:hover {
       text-decoration: underline;
+      color: var(--link-hover);
+    }
+
+    /* ======= ENCABEZADO ======= */
+    header {
+      background-color: var(--bg-header);
+      color: #ffffff;
+      padding: 24px 16px 12px 16px;
+      border-bottom: 1px solid #000000;
+    }
+
+    .header-inner {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .site-title {
+      font-size: 1.9rem;
+      margin-bottom: 4px;
+    }
+
+    .site-subtitle {
+      font-size: 1.1rem;
+      margin-bottom: 6px;
+    }
+
+    .site-tags {
+      font-size: 0.9rem;
+      color: #d4d4d4;
+    }
+
+    /* ======= NAV / BOTONES ======= */
+    nav {
+      margin-top: 14px;
+      border-top: 1px solid #333333;
+      padding-top: 10px;
+    }
+
+    .nav-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .nav-button {
+      background-color: transparent;
+      border: 1px solid #555555;
+      color: #f5f5f5;
+      padding: 4px 10px;
+      font-size: 0.9rem;
+      cursor: pointer;
+      border-radius: 3px;
+    }
+
+    .nav-button:hover {
+      background-color: #222222;
+    }
+
+    .nav-button.active {
+      background-color: #f5f5f5;
+      color: #111111;
+      border-color: #f5f5f5;
+    }
+
+    /* ======= CONTENIDO PRINCIPAL ======= */
+    main {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 24px 16px 32px 16px;
+    }
+
+    .section {
+      display: none;           /* por defecto ocultas */
+    }
+
+    .section.active {
+      display: block;          /* se muestra solo la sección activa */
     }
 
     .section-title {
       font-weight: bold;
-      margin-top: 1.5em;
-      margin-bottom: 0.5em;
+      font-size: 1.1rem;
+      margin-bottom: 0.6em;
+      margin-top: 0.4em;
+    }
+
+    p {
+      margin-bottom: 0.7em;
+      line-height: 1.4;
     }
 
     ul {
-      margin-top: 0.3em;
+      margin-left: 1.2em;
+      margin-bottom: 0.7em;
+    }
+
+    li {
+      margin-bottom: 0.4em;
     }
 
     .small {
-      font-size: 0.9em;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    hr {
+      border: none;
+      border-top: 1px solid #cccccc;
+      margin: 1.2em 0;
+    }
+
+    /* ======= HOME: BIO + FOTO ======= */
+    .home-layout {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      align-items: flex-start;
+    }
+
+    .profile-photo {
+      width: 160px;
+      height: 160px;
+      object-fit: cover;
+      border-radius: 4px;
+      border: 1px solid #cccccc;
+    }
+
+    .home-text {
+      flex: 1;
+      min-width: 220px;
+    }
+
+    .home-text p {
+      margin-bottom: 0.8em;
+    }
+
+    /* ======= FOOTER ======= */
+    footer {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 16px 20px 16px;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      border-top: 1px solid #d4d4d4;
+    }
+
+    footer p {
+      margin-top: 0.6em;
+      text-align: center;
+    }
+
+    /* ======= RESPONSIVE ======= */
+    @media (max-width: 600px) {
+      header {
+        padding: 16px 10px 8px 10px;
+      }
+
+      main {
+        padding: 18px 10px 24px 10px;
+      }
     }
   </style>
 </head>
 
 <body>
-  <div id="container">
 
-    <!-- Cabecera -->
-    <h1>Gustavo Valdivia-Mera</h1>
-    <h2>Theoretical Physics</h2>
+  <!-- ================== HEADER FIJO ================== -->
+  <header>
+    <div class="header-inner">
+      <div class="site-title">Gustavo Valdivia-Mera</div>
+      <div class="site-subtitle">Theoretical Physics</div>
+      <div class="site-tags">
+        Black hole physics · Quantum field theory · Condensed matter · Holography · String theory
+      </div>
 
-    <p style="text-align: center;" class="small">
-      Black hole physics · Quantum field theory · Condensed matter · Holography · String theory
-    </p>
-
-    <hr>
-
-    <!-- Menú de navegación old-school -->
-    <div class="nav">
-      <a href="#research">Research</a> |
-      <a href="#publications">Publications</a> |
-      <a href="#notes">Notes</a> |
-      <a href="#talks">Talks</a> |
-      <a href="#teaching">Teaching</a> |
-      <a href="#contact">Contact</a>
+      <nav>
+        <div class="nav-buttons">
+          <button class="nav-button active" data-target="home">Home</button>
+          <button class="nav-button" data-target="research">Research</button>
+          <button class="nav-button" data-target="publications">Publications</button>
+          <button class="nav-button" data-target="notes">Notes</button>
+          <button class="nav-button" data-target="talks">Talks</button>
+          <button class="nav-button" data-target="teaching">Teaching</button>
+          <button class="nav-button" data-target="contact">Contact</button>
+        </div>
+      </nav>
     </div>
+  </header>
 
-    <hr>
+  <!-- ================== CONTENIDO QUE CAMBIA ================== -->
+  <main>
 
-    <!-- Bio corta -->
-    <p>
-      <b>Short bio.</b>
-      I am a theoretical physicist working on black hole physics, quantum field theory,
-      condensed matter systems, and holography, with a focus on their connections to
-      string theory and quantum many-body dynamics.
-    </p>
+    <!-- ====== HOME (BIO + FOTO) ====== -->
+    <section id="home" class="section active">
+      <div class="home-layout">
+        <!-- FOTO: cambia "photo.jpg" por el nombre real de tu archivo -->
+        <div>
+          <img src="photo.jpg" alt="Gustavo Valdivia-Mera" class="profile-photo">
+        </div>
+        <div class="home-text">
+          <p class="section-title">Short bio</p>
+          <p>
+            I am a theoretical physicist working on black hole physics, quantum field theory,
+            condensed matter systems, and holography, with a focus on their connections to
+            string theory, quantum information, and quantum many-body dynamics.
+          </p>
+          <p>
+            My recent work has focused on causal diamond thermodynamics, the Unruh effect and
+            thermofield double states, and near-horizon perspectives on entropy and radiation.
+            I am also interested in strongly correlated quantum matter and SYK-like models as
+            laboratories for holographic duality.
+          </p>
+        </div>
+      </div>
+    </section>
 
-    <!-- Research -->
-    <a name="research"></a>
-    <p class="section-title">Research interests</p>
-    <ul>
-      <li>Black hole physics and quantum aspects of gravity.</li>
-      <li>Quantum field theory and many-body systems.</li>
-      <li>Condensed matter theory and quantum phases of matter.</li>
-      <li>Holography and gauge/gravity duality.</li>
-      <li>Connections to string theory and quantum information.</li>
-    </ul>
+    <!-- ====== RESEARCH ====== -->
+    <section id="research" class="section">
+      <p class="section-title">Research interests</p>
+      <ul>
+        <li>Black hole physics and quantum aspects of gravity.</li>
+        <li>Quantum field theory and many-body systems.</li>
+        <li>Condensed matter theory and quantum phases of matter.</li>
+        <li>Holography, gauge/gravity duality, and causal diamonds.</li>
+        <li>Connections to string theory and quantum information.</li>
+        <li>SYK-type models, quantum chaos, and holographic quantum matter.</li>
+      </ul>
 
-    <!-- Publications -->
-    <a name="publications"></a>
-    <p class="section-title">Publications and preprints</p>
-    <p class="small">
-      (*For a complete and up-to-date list, see my
-      <a href="https://arxiv.org" target="_blank">arXiv author page</a> or my
-      <a href="https://inspirehep.net" target="_blank">INSPIRE profile</a>.*)
-    </p>
+      <p class="section-title">Current and recent topics</p>
+      <ul>
+        <li>Causal diamond thermodynamics and horizon entropy.</li>
+        <li>Unruh effect, acceleration radiation, and thermofield double states.</li>
+        <li>Near-horizon perspectives and effective descriptions of radiation.</li>
+        <li>Quantum information aspects of black holes and quantum fields in curved spacetimes.</li>
+      </ul>
+    </section>
 
-    <ul>
-      <li>
-        <b>Title of your paper 1</b><br>
-        with A. Collaborator and B. Collaborator,<br>
-        <i>Journal Name</i> <b>Volume</b>, page (year) [arXiv:xxxx.xxxxx].
-      </li>
-      <li>
-        <b>Title of your paper 2</b><br>
-        <i>Preprint</i> [arXiv:yyyy.yyyyy].
-      </li>
-      <!-- Añade más entradas aquí -->
-    </ul>
+    <!-- ====== PUBLICATIONS ====== -->
+    <section id="publications" class="section">
+      <p class="section-title">Publications and preprints</p>
 
-    <!-- Notes -->
-    <a name="notes"></a>
-    <p class="section-title">Notes and lecture material</p>
-    <ul>
-      <li>
-        <a href="notes/holography_black_holes.pdf" target="_blank">
-          Holography and black hole physics (lecture notes)
-        </a>
-      </li>
-      <li>
-        <a href="notes/condensed_matter_from_qft.pdf" target="_blank">
-          Condensed matter from a quantum field theory perspective
-        </a>
-      </li>
-      <!-- Más enlaces a tus notes -->
-    </ul>
+      <p class="small">
+        For a complete and up-to-date list, see my
+        <a href="https://inspirehep.net/authors/2875122" target="_blank">INSPIRE-HEP author page</a>.
+      </p>
 
-    <!-- Talks -->
-    <a name="talks"></a>
-    <p class="section-title">Talks and seminars</p>
-    <ul>
-      <li>
-        “Title of talk”, <i>Conference / Seminar</i>, Institution, City (Year).
-      </li>
-      <li>
-        “Another talk”, <i>Workshop</i>, Institution (Year).
-      </li>
-    </ul>
+      <ul>
+        <li>
+          <b>Thermal nature of the causal diamond horizon: A hidden property of the inertial propagator</b><br>
+          N. Eissa, G. Valdivia-Mera, and C.&nbsp;R. Ordóñez<br>
+          <i>Phys. Rev. D</i> (2025, accepted).<br>
+          <a href="https://arxiv.org/abs/2508.16880" target="_blank">arXiv:2508.16880 [hep-th]</a>
+        </li>
 
-    <!-- Teaching -->
-    <a name="teaching"></a>
-    <p class="section-title">Teaching</p>
-    <ul>
-      <li>Course on Quantum Field Theory (Year, Institution).</li>
-      <li>Selected topics in Black Hole Physics and Holography (Year, Institution).</li>
-    </ul>
+        <li>
+          <b>Horizon brightened acceleration radiation entropy in causal diamond geometry: A near-horizon perspective</b><br>
+          N. Eissa, G. Valdivia-Mera, and C.&nbsp;R. Ordóñez<br>
+          Preprint (2025).<br>
+          <a href="https://arxiv.org/abs/2508.13493" target="_blank">arXiv:2508.13493 [hep-th]</a>
+        </li>
 
-    <!-- Contact -->
-    <a name="contact"></a>
-    <p class="section-title">Contact</p>
-    <p class="small">
-      Department of Physics<br>
-      University / Institution<br>
-      City, Country<br>
-      E-mail: <a href="mailto:your.email@university.edu">your.email@university.edu</a>
-    </p>
+        <li>
+          <b>Path integral derivation of the thermofield double state in causal diamonds</b><br>
+          A. Chakraborty, G. Valdivia-Mera, and C.&nbsp;R. Ordóñez<br>
+          <i>Class. Quantum Grav.</i> <b>42</b>, 025015 (2025).<br>
+          <a href="https://doi.org/10.1088/1361-6382/ad9e65" target="_blank">DOI: 10.1088/1361-6382/ad9e65</a>,
+          <a href="https://arxiv.org/abs/2312.03541" target="_blank">arXiv:2312.03541 [hep-th]</a>
+        </li>
 
-    <hr>
-    <p class="small" style="text-align: center;">
-      Last update: November 2025
-    </p>
+        <li>
+          <b>On the Unruh effect and the thermofield double state</b><br>
+          G. Valdivia-Mera<br>
+          <i>Int. J. Mod. Phys. D</i> (2025, in press).<br>
+          <a href="https://arxiv.org/abs/2001.09869" target="_blank">arXiv:2001.09869 [hep-th]</a>,
+          <a href="https://doi.org/10.1142/S0218271825300022" target="_blank">DOI: 10.1142/S0218271825300022</a>
+        </li>
 
-  </div>
+        <li>
+          <b>Anomalous changing of geodesics in hairy black holes</b><br>
+          W. Ccuiro, D. Choque, and G. Valdivia-Mera<br>
+          Preprint (2021).<br>
+          <a href="https://arxiv.org/abs/2111.04800" target="_blank">arXiv:2111.04800 [gr-qc]</a>
+        </li>
+      </ul>
+    </section>
+
+    <!-- ====== NOTES ====== -->
+    <section id="notes" class="section">
+      <p class="section-title">Notes and lecture material</p>
+      <p class="small">
+        Selected notes will be posted here as they become available.
+      </p>
+      <ul>
+        <li>
+          <a href="notes/holography_black_holes.pdf" target="_blank">
+            Holography and black hole physics (lecture notes)
+          </a>
+          <span class="small">(in preparation)</span>
+        </li>
+        <li>
+          <a href="notes/condensed_matter_from_qft.pdf" target="_blank">
+            Condensed matter from a quantum field theory perspective
+          </a>
+          <span class="small">(in preparation)</span>
+        </li>
+      </ul>
+    </section>
+
+    <!-- ====== TALKS ====== -->
+    <section id="talks" class="section">
+      <p class="section-title">Talks and seminars</p>
+      <ul>
+        <li>
+          “Title of talk”, <i>Conference / Seminar</i>, Institution, City (Year).
+        </li>
+        <li>
+          “Another talk”, <i>Workshop</i>, Institution (Year).
+        </li>
+      </ul>
+      <p class="small">
+        This list will be updated as new talks are given.
+      </p>
+    </section>
+
+    <!-- ====== TEACHING ====== -->
+    <section id="teaching" class="section">
+      <p class="section-title">Teaching</p>
+      <ul>
+        <li>Course on Quantum Field Theory (Year, Institution).</li>
+        <li>Selected topics in Black Hole Physics and Holography (Year, Institution).</li>
+      </ul>
+    </section>
+
+    <!-- ====== CONTACT ====== -->
+    <section id="contact" class="section">
+      <p class="section-title">Contact</p>
+      <p class="small">
+        Department of Physics<br>
+        University / Institution<br>
+        City, Country<br>
+        E-mail:
+        <a href="mailto:your.email@university.edu">your.email@university.edu</a>
+      </p>
+    </section>
+
+  </main>
+
+  <!-- ================== FOOTER ================== -->
+  <footer>
+    <p>Last update: November 2025</p>
+  </footer>
+
+  <!-- ================== JS SIMPLE PARA CAMBIAR SECCIONES ================== -->
+  <script>
+    const buttons = document.querySelectorAll('.nav-button');
+    const sections = document.querySelectorAll('.section');
+
+    buttons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const target = btn.getAttribute('data-target');
+
+        // actualizar estado de botones
+        buttons.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        // mostrar solo la sección seleccionada
+        sections.forEach(sec => {
+          if (sec.id === target) {
+            sec.classList.add('active');
+          } else {
+            sec.classList.remove('active');
+          }
+        });
+      });
+    });
+  </script>
+
 </body>
 </html>
