@@ -2,305 +2,512 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Gustavo Valdivia-Mera - Theoretical Physicist</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gustavo Valdivia-Mera</title>
 
   <style>
-    /* ============================================================
-       ESTILO GENERAL — Versión A (tu estilo original 1:1)
-       ============================================================ */
     :root {
-      --bg-header: #e5e5e5;   /* gris claro sobrio */
-      --bg-main: #f5f5f5;
+      --bg-main: #f7f6f2;
+      --bg-header: #ece9e2;
       --text-main: #111111;
-      --text-muted: #555555;
-      --accent: #dcdcdc;
-      --link: #2563eb;
-      --link-hover: #1d4ed8;
+      --text-muted: #5f5f5f;
+      --border: #d6d1c8;
+      --accent: #1f4e79;
+      --accent-hover: #163957;
+      --surface: #ffffff;
     }
 
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
     body {
-      font-family: "Times New Roman", serif;
-      background-color: var(--bg-main);
+      background: var(--bg-main);
       color: var(--text-main);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 16px;
+      line-height: 1.6;
     }
 
     a {
-      color: var(--link);
+      color: var(--accent);
       text-decoration: none;
     }
-    a:hover { text-decoration: underline; color: var(--link-hover); }
 
-    /* ===== HEADER ===== */
-    header {
-      background-color: var(--bg-header);
-      padding: 24px 16px 12px 16px;
-      border-bottom: 1px solid #cfcfcf;
+    a:hover,
+    a:focus {
+      color: var(--accent-hover);
+      text-decoration: underline;
     }
 
-    .header-inner {
-      max-width: 900px;
+    header {
+      background: var(--bg-header);
+      border-bottom: 1px solid var(--border);
+      padding: 26px 18px 14px;
+    }
+
+    .header-inner,
+    main,
+    footer {
+      max-width: 980px;
       margin: 0 auto;
     }
 
     .site-title {
-      font-size: 1.9rem;
-      margin-bottom: 4px;
+      font-size: 2rem;
+      font-weight: 500;
+      letter-spacing: 0;
+      line-height: 1.2;
     }
 
-    .site-subtitle {
-      font-size: 1.1rem;
-      margin-bottom: 6px;
+    nav {
+      border-top: 1px solid var(--border);
+      margin-top: 18px;
+      padding-top: 12px;
     }
 
-    /* ===== NAV BUTTONS ===== */
-    nav { margin-top: 14px; border-top: 1px solid #bdbdbd; padding-top: 10px; }
-
-    .nav-buttons { display: flex; flex-wrap: wrap; gap: 8px; }
-
-    .nav-button {
-      background-color: var(--bg-header);
-      border: 1px solid #999999;
-      color: #111111;
-      padding: 4px 10px;
-      font-size: 0.9rem;
-      cursor: pointer;
-      border-radius: 3px;
-    }
-
-    .nav-button:hover { background-color: #d6d6d6; }
-
-    .nav-button.active {
-      background-color: #ffffff;
-      color: #111111;
-      border-color: #777777;
-    }
-
-    /* ===== MAIN CONTENT ===== */
-    main {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 24px 16px 32px 16px;
-    }
-
-    .section { display: none; }
-    .section.active { display: block; }
-
-    .section-title {
-      font-weight: bold;
-      font-size: 1.1rem;
-      margin-bottom: 0.6em;
-      margin-top: 0.4em;
-    }
-
-    p { margin-bottom: 0.7em; line-height: 1.45; }
-    ul { margin-left: 1.2em; margin-bottom: 0.7em; }
-    li { margin-bottom: 0.4em; }
-
-    /* ===== HOME (photo + bio) ===== */
-    .home-layout {
+    .nav-buttons {
       display: flex;
       flex-wrap: wrap;
       gap: 16px;
-      align-items: flex-start;
+    }
+
+    .nav-button {
+      appearance: none;
+      background: transparent;
+      border: 0;
+      border-bottom: 2px solid transparent;
+      color: var(--text-main);
+      cursor: pointer;
+      font-family: inherit;
+      font-size: 0.95rem;
+      padding: 2px 0 5px;
+    }
+
+    .nav-button:hover,
+    .nav-button:focus {
+      color: var(--accent);
+    }
+
+    .nav-button.active {
+      border-bottom-color: var(--accent);
+      color: var(--accent);
+    }
+
+    main {
+      padding: 34px 18px 42px;
+    }
+
+    .section {
+      display: none;
+    }
+
+    .section.active {
+      display: block;
+    }
+
+    .section-title {
+      font-size: 1.35rem;
+      font-weight: 500;
+      line-height: 1.3;
+      margin-bottom: 18px;
+    }
+
+    .subsection-title {
+      border-bottom: 1px solid var(--border);
+      font-size: 1.05rem;
+      font-weight: 600;
+      margin: 30px 0 12px;
+      padding-bottom: 6px;
+    }
+
+    p {
+      margin-bottom: 0.9em;
+    }
+
+    ul {
+      margin: 0 0 1em 1.25em;
+    }
+
+    li {
+      margin-bottom: 0.72em;
+      padding-left: 0.1em;
+    }
+
+    .home-layout {
+      align-items: start;
+      display: grid;
+      gap: 32px;
+      grid-template-columns: minmax(220px, 280px) minmax(0, 1fr);
     }
 
     .profile-photo {
-      width: 360px;
-      height: 360px;
-      object-fit: cover;
+      aspect-ratio: 1 / 1;
+      border: 1px solid var(--border);
       border-radius: 4px;
-      border: 1px solid #cccccc;
+      max-width: 280px;
+      object-fit: cover;
+      width: 100%;
     }
 
     .home-text {
-      flex: 1;
-      min-width: 220px;
+      max-width: 660px;
     }
 
-    /* ===== CV VIEWER ===== */
-    .cv-frame {
-      width: 100%;
-      height: 700px;
-      border: 1px solid #cccccc;
-      background-color: #ffffff;
+    .info-grid {
+      border-top: 1px solid var(--border);
+      display: grid;
+      gap: 28px;
+      grid-template-columns: minmax(220px, 0.85fr) minmax(260px, 1.15fr);
+      margin-top: 26px;
+      padding-top: 22px;
     }
 
+    .info-heading {
+      color: var(--text-main);
+      font-size: 0.95rem;
+      font-weight: 600;
+      margin-bottom: 8px;
+      text-transform: none;
+    }
+
+    .link-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px 8px;
+      margin-top: 10px;
+    }
+
+    .link-row a:not(:last-child)::after {
+      color: var(--text-muted);
+      content: "\00b7";
+      margin-left: 8px;
+      text-decoration: none;
+    }
+
+    .publication-list,
+    .talk-list,
+    .notes-list,
+    .teaching-list,
+    .distinctions-list {
+      list-style: none;
+      margin-left: 0;
+    }
+
+    .publication-list li,
+    .talk-list li,
+    .notes-list li,
+    .teaching-list li,
+    .distinctions-list li {
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 0;
+      padding: 12px 0;
+    }
+
+    .publication-list li:first-child,
+    .talk-list li:first-child,
+    .notes-list li:first-child,
+    .teaching-list li:first-child,
+    .distinctions-list li:first-child {
+      padding-top: 0;
+    }
+
+    .item-title {
+      font-weight: 600;
+    }
+
+    .item-meta,
     .small {
-      font-size: 0.9rem;
       color: var(--text-muted);
+      font-size: 0.94rem;
     }
 
-    /* ===== FOOTER ===== */
-    footer {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 0 16px 20px 16px;
-      font-size: 0.85rem;
+    .item-links {
+      font-size: 0.94rem;
+      margin-top: 2px;
+    }
+
+    .item-links a + a::before {
       color: var(--text-muted);
-      border-top: 1px solid #d4d4d4;
+      content: " \00b7 ";
+    }
+
+    .notes-topic {
+      margin-top: 22px;
+    }
+
+    .notes-topic h3 {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .cv-frame {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      height: 720px;
+      margin-top: 14px;
+      width: 100%;
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      color: var(--text-muted);
+      font-size: 0.86rem;
+      padding: 18px 18px 24px;
       text-align: center;
     }
 
+    @media (max-width: 760px) {
+      header {
+        padding-top: 22px;
+      }
+
+      .site-title {
+        font-size: 1.72rem;
+      }
+
+      .nav-buttons {
+        gap: 12px;
+      }
+
+      .home-layout,
+      .info-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .profile-photo {
+        max-width: 240px;
+      }
+
+      main {
+        padding-top: 28px;
+      }
+    }
   </style>
 </head>
 
 <body>
-
-  <!-- ========================= HEADER ========================= -->
   <header>
     <div class="header-inner">
       <div class="site-title">Gustavo Valdivia-Mera</div>
-      <div class="site-subtitle">Theoretical Physics</div>
 
-      <nav>
+      <nav aria-label="Main navigation">
         <div class="nav-buttons">
-          <button class="nav-button active" data-target="home">Home</button>
-          <button class="nav-button" data-target="research">Research</button>
-          <button class="nav-button" data-target="publications">Publications</button>
-          <button class="nav-button" data-target="notes">Notes</button>
-          <button class="nav-button" data-target="talks">Talks</button>
-          <button class="nav-button" data-target="cv">CV</button>
-          <button class="nav-button" data-target="contact">Contact</button>
+          <button class="nav-button active" type="button" data-target="home">Home</button>
+          <button class="nav-button" type="button" data-target="research">Research</button>
+          <button class="nav-button" type="button" data-target="lecture-notes">Lecture Notes</button>
+          <button class="nav-button" type="button" data-target="teaching">Teaching</button>
+          <button class="nav-button" type="button" data-target="elsewhere">Elsewhere</button>
+          <button class="nav-button" type="button" data-target="cv">CV</button>
         </div>
       </nav>
     </div>
   </header>
 
-  <!-- ========================= MAIN CONTENT ========================= -->
   <main>
-
-    <!-- HOME SECTION -->
     <section id="home" class="section active">
       <div class="home-layout">
-
-        <!-- YOUR PHOTO -->
         <img src="images/Gus.jpg" class="profile-photo" alt="Gustavo Valdivia-Mera">
 
         <div class="home-text">
-          <p class="section-title">Short bio</p>
+          <p>
+            I am a Ph.D. student in Physics at the University of Houston and a Research Assistant in the
+            <a href="https://sites.google.com/nsm.uh.edu/qmb/home" target="_blank" rel="noopener">Hosur Group</a>.
+            I am affiliated with the Department of Physics and the Texas Center for Superconductivity, University of Houston.
+          </p>
 
           <p>
-            I am a Ph.D. student in Physics at the University of Houston, working in theoretical physics. My research focuses on quantum field theory in causally restricted domains, horizon thermodynamics, quantum many-body theory, and topological quantum matter.
-          </p>
-          
-          <p>
-            Before joining UH, I earned a B.Sc. in Physics from the National University of San Marcos in Peru, graduating with honors and ranking first in my cohort. I later earned an M.Sc. in High Energy Physics from ICTP–EAIFR in Rwanda, supported by an ICTP scholarship. As part of this M.Sc. training, I also completed the ICTP Postgraduate Diploma Programme in High Energy Physics (online).
+            My research focuses on quantum field theory in causally restricted spacetime domains, with particular emphasis on the emergence of thermality, information-theoretic structures, and their quantum-gravity aspects. I am also interested in quantum many-body theory, topological quantum matter, and anomalous transport phenomena.
           </p>
         </div>
+      </div>
 
+      <div class="info-grid">
+        <div>
+          <div class="info-heading">Contact &amp; Links</div>
+          <p>
+            Email: <a href="mailto:aremaividlav@gmail.com">aremaividlav@gmail.com</a><br>
+            Office: Texas Center for Superconductivity, Room 310<br>
+            University of Houston, Houston, Texas, USA
+          </p>
+
+          <div class="link-row" aria-label="Academic and professional links">
+            <a href="https://inspirehep.net/authors/2875122?ui-citation-summary=true" target="_blank" rel="noopener">INSPIRE-HEP</a>
+            <a href="https://arxiv.org/search/hep-th?searchtype=author&amp;query=Valdivia-Mera,+G" target="_blank" rel="noopener">arXiv</a>
+            <a href="https://orcid.org/0000-0002-8400-3625" target="_blank" rel="noopener">ORCID</a>
+            <a href="https://github.com/gvaldiviamera" target="_blank" rel="noopener">GitHub</a>
+            <a href="https://www.linkedin.com/in/gvmphysics/" target="_blank" rel="noopener">LinkedIn</a>
+          </div>
+        </div>
+
+        <div>
+          <div class="info-heading">Selected Academic Distinctions</div>
+          <ul class="distinctions-list">
+            <li>Student Ambassador, American Physical Society (APS), 2026-2027.</li>
+            <li>Lydia Mendoza Fellowship, University of Houston, 2024-2026.</li>
+            <li>Presidential Fellowship, University of Houston, 2023-2025.</li>
+            <li>1st Place, Quantum Computing Fall Fest, University of Houston, 2023.</li>
+            <li>Ranked 1st in cohort, HEP section, M.Sc. in High Energy Physics, ICTP-EAIFR/University of Rwanda.</li>
+            <li>Graduated 1st in class, B.Sc. in Physics, Universidad Nacional Mayor de San Marcos.</li>
+            <li>Research Scholarship, UNMSM Vice-Chancellor's Office, 2018.</li>
+          </ul>
+        </div>
       </div>
     </section>
 
-    <!-- RESEARCH SECTION -->
     <section id="research" class="section">
-      <p class="section-title">Research interests</p>
-      <ul>
-        <li>Black hole physics and near-horizon structure.</li>
-        <li>HBAR entropy and thermal properties of causal horizons.</li>
-        <li>Quantum field theory in curved spacetime; Unruh/Hawking phenomena.</li>
-        <li>Emergence of conformal symmetry in effective geometries.</li>
-        <li>SYK-type models as laboratories for quantum gravity and holography.</li>
-        <li>Quantum chaos, scrambling, and thermalization in many-body systems.</li>
-        <li>Topological phases and strongly correlated condensed matter systems.</li>
+      <h1 class="section-title">Research</h1>
+      <p>Selected publications and talks are listed below.</p>
+
+      <h2 class="subsection-title">Publications</h2>
+      <ul class="publication-list">
+        <li>
+          <div class="item-title">Thermal nature of the causal diamond horizon: A hidden property of the inertial propagator</div>
+          <div>Nada Eissa, Carlos R. Ord&oacute;&ntilde;ez, and Gustavo Valdivia-Mera.</div>
+          <div class="item-meta"><i>Physical Review D</i> 112, 125008 (2025).</div>
+          <div class="item-links">
+            <a href="https://journals.aps.org/prd/abstract/10.1103/PhysRevD.112.125008" target="_blank" rel="noopener">Journal</a>
+            <a href="https://arxiv.org/abs/2508.16880" target="_blank" rel="noopener">arXiv</a>
+          </div>
+        </li>
+
+        <li>
+          <div class="item-title">Horizon brightened acceleration radiation entropy in causal diamond geometry: A near-horizon perspective</div>
+          <div>Nada Eissa, Carlos R. Ord&oacute;&ntilde;ez, and Gustavo Valdivia-Mera.</div>
+          <div class="item-meta"><i>Physical Review D</i> 112, 085030 (2025).</div>
+          <div class="item-links">
+            <a href="https://journals.aps.org/prd/abstract/10.1103/PhysRevD.112.085030" target="_blank" rel="noopener">Journal</a>
+            <a href="https://arxiv.org/abs/2508.13493" target="_blank" rel="noopener">arXiv</a>
+          </div>
+        </li>
+
+        <li>
+          <div class="item-title">Path integral derivation of the thermofield double state in causal diamonds</div>
+          <div>Abhijit Chakraborty, Carlos R. Ord&oacute;&ntilde;ez, and Gustavo Valdivia-Mera.</div>
+          <div class="item-meta"><i>Classical and Quantum Gravity</i> 42, 025015 (2025).</div>
+          <div class="item-links">
+            <a href="https://iopscience.iop.org/article/10.1088/1361-6382/ad9e65" target="_blank" rel="noopener">Journal</a>
+            <a href="https://arxiv.org/abs/2312.03541" target="_blank" rel="noopener">arXiv</a>
+          </div>
+        </li>
+
+        <li>
+          <div class="item-title">On the Unruh effect and the thermofield double state</div>
+          <div>Gustavo Valdivia-Mera.</div>
+          <div class="item-meta"><i>International Journal of Modern Physics D</i> 34, 2530002 (2025).</div>
+          <div class="item-links">
+            <a href="https://www.worldscientific.com/doi/10.1142/S0218271825300022" target="_blank" rel="noopener">Journal</a>
+            <a href="https://arxiv.org/abs/2001.09869" target="_blank" rel="noopener">arXiv</a>
+          </div>
+        </li>
       </ul>
-    </section>
 
-    <!-- PUBLICATIONS SECTION -->
-    <section id="publications" class="section">
-      <p class="section-title">Publications</p>
-
-      <ul>
+      <h2 class="subsection-title">Talks</h2>
+      <ul class="talk-list">
         <li>
-          <b>Thermal nature of the causal diamond horizon: A hidden property of the inertial propagator</b><br>
-          Phys.Rev.D 112 125008 (2025),<br>
-          <a href="https://arxiv.org/abs/2508.16880" target="_blank">arXiv:2508.16880</a>
+          <div class="item-title">Strange Metals and Black Holes: A Holographic Correspondence</div>
+          <div>Research Day, Department of Physics, University of Houston, Houston, TX, USA.</div>
+          <div class="item-meta">March 2026.</div>
+          <div class="item-links"><a href="talks/Poster_Research_Day__Gustavo_Valdivia_Mera.pdf" target="_blank">Poster PDF</a></div>
         </li>
 
         <li>
-          <b>Horizon brightened acceleration radiation entropy in causal diamond geometry</b><br>
-          Phys. Rev. D 112, 085030 (2025)<br>
-          <a href="https://arxiv.org/abs/2508.13493" target="_blank">arXiv:2508.13493</a>
+          <div class="item-title">Thermal Nature of the Causal Diamond Horizon</div>
+          <div>TINKUY 2026: "Un Panorama de la F&iacute;sica Te&oacute;rica en el Per&uacute;", Lima, Peru.</div>
+          <div class="item-meta">February 2026.</div>
+          <div class="item-links"><a href="talks/Thermal_Nature_of_the_Causal_Diamond_Horizon__TINKUY_2026.pdf" target="_blank">Slides PDF</a></div>
         </li>
 
         <li>
-          <b>Path integral derivation of the thermofield double state in causal diamonds</b><br>
-          Class.Quant.Grav. 42, 025015 (2025)<br>
-          <a href="https://arxiv.org/abs/2312.03541" target="_blank">arXiv:2312.03541</a>
+          <div class="item-title">Towards HBAR in the causal diamond near horizon</div>
+          <div>IQSE Summer School on Quantum Science, Texas A&amp;M University, Casper, WY, USA.</div>
+          <div class="item-meta">July 2025.</div>
+          <div class="item-links"><a href="talks/HBAR_SummerSchool.pdf" target="_blank">Slides PDF</a></div>
         </li>
 
         <li>
-          <b>On the Unruh effect and the thermofield double state</b><br>
-          International Journal of Modern Physics D, 34, 2530002-55 (2025)<br>
-          Better to follow the arXiv version (corrected and continuously updated): <a href="https://arxiv.org/abs/2001.09869" target="_blank">arXiv:2001.09869</a>
-        </li>
-
-      </ul>
-    </section>
-
-    <!-- NOTES SECTION -->
-    <section id="notes" class="section">
-      <p class="section-title">Notes</p>
-      <p>Selected notes will be added here.</p>
-    </section>
-
-    <!-- TALKS SECTION -->
-    <section id="talks" class="section">
-      <p class="section-title">Conference & Seminar Presentations</p>
-
-      <ul>
-        <li>
-          <b>Strange Metals and Black Holes: A Holographic Correspondence</b><br>
-          Research Day, Department of Physics, University of Houston, TX, USA
-          <span class="small"><i>March 2026</i></span><br>
-          <a href="talks/Poster_Research_Day__Gustavo_Valdivia_Mera.pdf" target="_blank">[Poster PDF]</a>
-        </li>
-        
-        <li>
-          <b>Thermal Nature of the Causal Diamond Horizon</b><br>
-          TINKUY 2026: "Un Panorama de la Física Teórica en el Perú", Lima, Peru
-          <span class="small"><i>Feb 2026</i></span><br>
-          <a href="talks/Thermal_Nature_of_the_Causal_Diamond_Horizon__TINKUY_2026.pdf" target="_blank">[Slides PDF]</a>
-        </li>
-        
-        <li>
-          <b>Towards HBAR in the causal diamond near horizon</b><br>
-          IQSE Summer School on Quantum Science, Texas A&M University, Casper, WY, USA
-          <span class="small"><i>Jul 2025</i></span><br>
-          <a href="talks/HBAR_SummerSchool.pdf" target="_blank">[Slides PDF]</a>
+          <div class="item-title">Near-horizon (conformal) aspects of black holes and the universality (robustness) of HBAR entropy</div>
+          <div>AMO/IQSE Seminar, Texas A&amp;M University, College Station, TX, USA.</div>
+          <div class="item-meta">April 2025.</div>
+          <div class="item-links"><a href="talks/HBAR_Seminar.pdf" target="_blank">Slides PDF</a></div>
         </li>
 
         <li>
-          <b>Near-horizon (conformal) aspects of black holes and the universality (robustness) of HBAR entropy</b><br>
-          AMO/IQSE Seminar, Texas A&M University, College Station, TX, USA
-          <span class="small"><i>Apr 2025</i></span><br>
-          <a href="talks/HBAR_Seminar.pdf" target="_blank">[Slides PDF]</a>
-        </li>
-
-        <li>
-          <b>Path integral derivation of the thermofield double state in causal diamonds</b><br>
-          APS Global Physics Summit, Anaheim, CA, USA
-          <span class="small"><i>Mar 2025</i></span><br>
-          <a href="talks/TFD_CausalDiamonds.pdf" target="_blank">[Slides PDF]</a>
+          <div class="item-title">Path integral derivation of the thermofield double state in causal diamonds</div>
+          <div>APS Global Physics Summit, Anaheim, CA, USA.</div>
+          <div class="item-meta">March 2025.</div>
+          <div class="item-links"><a href="talks/TFD_CausalDiamonds.pdf" target="_blank">Slides PDF</a></div>
         </li>
       </ul>
     </section>
 
-    <!-- CV SECTION (PDF EMBED) -->
+    <section id="lecture-notes" class="section">
+      <h1 class="section-title">Lecture Notes</h1>
+      <p>
+        These lecture-style notes are informal manuscripts on topics related to my research interests. They are updated periodically. If you find typos or have comments, please feel free to contact me.
+      </p>
+
+      <div class="notes-topic">
+        <h3>Black Hole Thermodynamics</h3>
+        <ul class="notes-list">
+          <li>Notes will be added soon.</li>
+        </ul>
+      </div>
+
+      <div class="notes-topic">
+        <h3>The SYK Model</h3>
+        <ul class="notes-list">
+          <li>Notes will be added soon.</li>
+        </ul>
+      </div>
+
+      <div class="notes-topic">
+        <h3>The Holographic Principle</h3>
+        <ul class="notes-list">
+          <li>Notes will be added soon.</li>
+        </ul>
+      </div>
+
+      <div class="notes-topic">
+        <h3>Topology in Condensed Matter</h3>
+        <ul class="notes-list">
+          <li>Notes will be added soon.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="teaching" class="section">
+      <h1 class="section-title">Teaching</h1>
+
+      <h2 class="subsection-title">University of Houston</h2>
+      <ul class="teaching-list">
+        <li>Quantum Mechanics, Teaching Assistant, Undergraduate Course, Fall 2025.</li>
+        <li>Quantum Mechanics II, Teaching Assistant, Graduate Course, Spring 2025.</li>
+        <li>Physics Laboratory, Teaching Assistant, Undergraduate Course, Fall 2023.</li>
+      </ul>
+
+      <h2 class="subsection-title">TECSUP, Lima</h2>
+      <ul class="teaching-list">
+        <li>General Physics, Instructor, 2018.</li>
+      </ul>
+    </section>
+
+    <section id="elsewhere" class="section">
+      <h1 class="section-title">Elsewhere</h1>
+      <p>This section is under construction.</p>
+    </section>
+
     <section id="cv" class="section">
-      <p class="section-title">Curriculum Vitae</p>
-
+      <h1 class="section-title">Curriculum Vitae</h1>
       <p class="small">
-        Embedded viewer of my CV. You can scroll inside the window, zoom, or
+        A PDF version of my CV is available below. You can also
         <a href="CV_Gustavo_Valdivia_Mera.pdf" target="_blank">open it in a new tab</a>.
       </p>
 
-      <!-- Cambia el nombre/ruta si tu archivo está en otra carpeta -->
-      <iframe
-        class="cv-frame"
-        src="CV_Gustavo_Valdivia_Mera.pdf"
-      >
+      <iframe class="cv-frame" src="CV_Gustavo_Valdivia_Mera.pdf" title="Curriculum Vitae">
         <p>
           Your browser does not support embedded PDFs.
           You can download the CV
@@ -308,45 +515,42 @@
         </p>
       </iframe>
     </section>
-
-    <!-- CONTACT SECTION -->
-    <section id="contact" class="section">
-      <p class="section-title">Contact</p>
-
-      <p>
-        Interested in discussing physics, exchanging ideas, or exploring a collaboration (serious inquiries only)? Feel free to reach out to me at:
-      </p>
-
-      <p>
-        <a href="mailto:gvaldivi@cougarnet.uh.edu">gvaldivi@cougarnet.uh.edu</a>
-      </p>
-    </section>
-
   </main>
 
-  <!-- ========================= FOOTER ========================= -->
   <footer>
-    Last update: November 2025
+    Last update: June 2026
   </footer>
 
-  <!-- ========================= JS (NO CAMBIAR) ========================= -->
   <script>
     const buttons = document.querySelectorAll('.nav-button');
     const sections = document.querySelectorAll('.section');
 
-    buttons.forEach(btn => {
-      btn.addEventListener('click', () => {
-        const target = btn.dataset.target;
+    function setActiveSection(sectionId) {
+      const targetId = document.getElementById(sectionId) ? sectionId : 'home';
 
-        buttons.forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
+      buttons.forEach(button => {
+        button.classList.toggle('active', button.dataset.target === targetId);
+      });
 
-        sections.forEach(sec => {
-          sec.classList.toggle('active', sec.id === target);
-        });
+      sections.forEach(section => {
+        section.classList.toggle('active', section.id === targetId);
+      });
+    }
+
+    buttons.forEach(button => {
+      button.addEventListener('click', () => {
+        const target = button.dataset.target;
+        setActiveSection(target);
+        const nextUrl = target === 'home' ? window.location.pathname : '#' + target;
+        window.history.replaceState(null, '', nextUrl);
       });
     });
-  </script>
 
+    window.addEventListener('hashchange', () => {
+      setActiveSection(window.location.hash.replace('#', '') || 'home');
+    });
+
+    setActiveSection(window.location.hash.replace('#', '') || 'home');
+  </script>
 </body>
 </html>
