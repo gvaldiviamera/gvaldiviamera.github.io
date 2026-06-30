@@ -173,6 +173,10 @@
       text-transform: none;
     }
 
+    .links-heading {
+      margin-top: 14px;
+    }
+
     .link-row {
       display: flex;
       flex-wrap: wrap;
@@ -187,11 +191,19 @@
       text-decoration: none;
     }
 
+    .compact-list {
+      margin: 0 0 1em 1.1em;
+    }
+
+    .compact-list li {
+      margin-bottom: 0.35em;
+      padding-left: 0;
+    }
+
     .publication-list,
     .talk-list,
     .notes-list,
-    .teaching-list,
-    .distinctions-list {
+    .teaching-list {
       list-style: none;
       margin-left: 0;
     }
@@ -199,8 +211,7 @@
     .publication-list li,
     .talk-list li,
     .notes-list li,
-    .teaching-list li,
-    .distinctions-list li {
+    .teaching-list li {
       border-bottom: 1px solid var(--border);
       margin-bottom: 0;
       padding: 12px 0;
@@ -209,8 +220,7 @@
     .publication-list li:first-child,
     .talk-list li:first-child,
     .notes-list li:first-child,
-    .teaching-list li:first-child,
-    .distinctions-list li:first-child {
+    .teaching-list li:first-child {
       padding-top: 0;
     }
 
@@ -314,26 +324,27 @@
 
         <div class="home-text">
           <p>
-            I am a Ph.D. student in Physics at the University of Houston and a Research Assistant in the
-            <a href="https://sites.google.com/nsm.uh.edu/qmb/home" target="_blank" rel="noopener">Hosur Group</a>.
-            I am affiliated with the Department of Physics and the Texas Center for Superconductivity, University of Houston.
+            I am a Ph.D. student in Physics and a Research Assistant in the
+            <a href="https://sites.google.com/nsm.uh.edu/qmb/home" target="_blank" rel="noopener">Hosur Group</a>
+            at the University of Houston, based at the Texas Center for Superconductivity.
           </p>
 
           <p>
-            My research focuses on quantum field theory in causally restricted spacetime domains, with particular emphasis on the emergence of thermality, information-theoretic structures, and their quantum-gravity aspects. I am also interested in quantum many-body theory, topological quantum matter, and anomalous transport phenomena.
+            My research focuses on quantum field theory in causally restricted spacetime domains, with emphasis on thermality, information-theoretic structures, and quantum-gravity aspects. I am also interested in quantum many-body theory, topological quantum matter, and anomalous transport phenomena.
           </p>
         </div>
       </div>
 
       <div class="info-grid">
         <div>
-          <div class="info-heading">Contact &amp; Links</div>
-          <p>
-            Email: <a href="mailto:aremaividlav@gmail.com">aremaividlav@gmail.com</a><br>
-            Office: Texas Center for Superconductivity, Room 310<br>
-            University of Houston, Houston, Texas, USA
-          </p>
+          <div class="info-heading">Contact</div>
+          <ul class="compact-list">
+            <li>Email: <a href="mailto:aremaividlav@gmail.com">aremaividlav@gmail.com</a></li>
+            <li>Office: Texas Center for Superconductivity, Room 310.</li>
+            <li>Location: Houston, Texas, USA.</li>
+          </ul>
 
+          <div class="info-heading links-heading">Links</div>
           <div class="link-row" aria-label="Academic and professional links">
             <a href="https://inspirehep.net/authors/2875122?ui-citation-summary=true" target="_blank" rel="noopener">INSPIRE-HEP</a>
             <a href="https://arxiv.org/search/hep-th?searchtype=author&amp;query=Valdivia-Mera,+G" target="_blank" rel="noopener">arXiv</a>
@@ -345,11 +356,9 @@
 
         <div>
           <div class="info-heading">Selected Academic Distinctions</div>
-          <ul class="distinctions-list">
+          <ul class="compact-list distinctions-list">
             <li>Student Ambassador, American Physical Society (APS), 2026-2027.</li>
-            <li>Lydia Mendoza Fellowship, University of Houston, 2024-2026.</li>
-            <li>Presidential Fellowship, University of Houston, 2023-2025.</li>
-            <li>1st Place, Quantum Computing Fall Fest, University of Houston, 2023.</li>
+            <li>University of Houston: Lydia Mendoza Fellowship (2024-2026); Presidential Fellowship (2023-2025); 1st Place, Quantum Computing Fall Fest (2023).</li>
             <li>Ranked 1st in cohort, HEP section, M.Sc. in High Energy Physics, ICTP-EAIFR/University of Rwanda.</li>
             <li>Graduated 1st in class, B.Sc. in Physics, Universidad Nacional Mayor de San Marcos.</li>
             <li>Research Scholarship, UNMSM Vice-Chancellor's Office, 2018.</li>
