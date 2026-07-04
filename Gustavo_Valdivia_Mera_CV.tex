@@ -1,0 +1,198 @@
+\documentclass[10pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[margin=0.68in]{geometry}
+\usepackage{array}
+\usepackage{enumitem}
+\usepackage[colorlinks=true,urlcolor=accent,linkcolor=accent]{hyperref}
+\usepackage{microtype}
+\usepackage{tabularx}
+\usepackage{titlesec}
+\usepackage{xcolor}
+
+\definecolor{accent}{HTML}{1F4E79}
+\definecolor{textgray}{HTML}{4D4D4D}
+
+\titleformat{\section}
+  {\large\bfseries\scshape\color{accent}}
+  {}{0em}{}[\vspace{-2pt}\titlerule]
+\titlespacing{\section}{0pt}{8pt}{4pt}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{1pt}
+\setlist[itemize]{leftmargin=1.15em, topsep=1pt, itemsep=0pt, parsep=0pt}
+\pagestyle{empty}
+
+\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
+\newcommand{\name}[1]{{\LARGE\bfseries #1}}
+\newcommand{\role}[1]{{\normalsize\color{textgray} #1}}
+\newcommand{\contact}[1]{{\small #1}}
+\newcommand{\entry}[4]{%
+  \begin{tabularx}{\textwidth}{@{}Y r@{}}
+    \textbf{#1} & #2 \\
+    #3 & \textit{#4}
+  \end{tabularx}
+}
+\newcommand{\talk}[3]{%
+  \begin{tabularx}{\textwidth}{@{}Y r@{}}
+    \textbf{#1} & \textit{#2} \\
+    #3 &
+  \end{tabularx}
+}
+\newcommand{\publication}[5]{%
+  \item \textbf{#1}\\
+  #2\\
+  \textit{#3}. #4. #5
+}
+
+\begin{document}
+
+\begin{tabularx}{\textwidth}{@{}Y r@{}}
+  \name{Gustavo Valdivia-Mera} &
+  \contact{\href{mailto:aremaividlav@gmail.com}{aremaividlav@gmail.com}} \\
+  \role{Ph.D. Student in Physics, University of Houston} &
+  \contact{\href{https://gvaldiviamera.github.io}{gvaldiviamera.github.io}} \\
+  \contact{Department of Physics and Texas Center for Superconductivity} &
+  \contact{\href{https://orcid.org/0000-0002-8400-3625}{ORCID} \;|\;
+  \href{https://inspirehep.net/authors/2875122?ui-citation-summary=true}{INSPIRE-HEP}}
+\end{tabularx}
+
+\vspace{3pt}
+
+\section{Education}
+
+\entry{University of Houston}{2023--Present}
+{Ph.D. in Physics}{GPA: 4.0/4.0}
+\begin{itemize}
+  \item \textbf{Basic Core:} Methods of Mathematical Physics, Advanced Mechanics, Quantum Mechanics I--II, Electrodynamics, Statistical Physics.
+  \item \textbf{Advanced Core/Electives:} Quantum Field Theory I--II, Advanced Statistical Mechanics, General Relativity and Cosmology, Quantum Information.
+\end{itemize}
+
+\entry{ICTP-EAIFR / University of Rwanda}{2020--2022}
+{M.Sc. in High Energy Physics}{Ranked 1st in cohort (HEP section)}
+\begin{itemize}
+  \item Thesis: \textit{Bounds on eV-scale sterile neutrinos from neutrinoless double-beta decay}.
+  \item Completed the ICTP Diploma Programme in High Energy Physics during the M.Sc. program.
+\end{itemize}
+
+\entry{Universidad Nacional Mayor de San Marcos}{2018--2019}
+{Professional Degree in Physics}{Distinction: Outstanding}
+\begin{itemize}
+  \item Thesis: \textit{On the Underlying Relation Between Quantum Entanglement and Wormholes}.
+\end{itemize}
+
+\entry{Universidad Nacional Mayor de San Marcos}{2012--2017}
+{B.Sc. in Physics}{Ranked 1st in cohort}
+
+\section{Research Experience}
+
+\entry{Hosur Group, University of Houston}{2026--Present}
+{Research Assistant}{Houston, TX}
+\begin{itemize}
+  \item Study theoretical problems in strongly correlated quantum many-body physics, topological quantum matter, and anomalous transport.
+\end{itemize}
+
+\entry{Ordóñez Lab, University of Houston}{2023--2025}
+{Research Assistant}{Houston, TX}
+\begin{itemize}
+  \item Investigated the emergence of thermality and information-theoretic structures in causally restricted spacetime domains, including causal diamond horizons and black holes.
+\end{itemize}
+
+\entry{Theoretical Physics Group, UNMSM}{2015--2019}
+{Undergraduate Research Affiliate}{Lima, Peru}
+\begin{itemize}
+  \item Worked on the AdS/CFT correspondence, black hole thermodynamics, and the relation between entanglement and spacetime geometry.
+\end{itemize}
+
+\section{Publications}
+
+\begin{itemize}
+  \publication
+  {The Helical SYK Model and Emergent Infrared Integrability}
+  {Gustavo Valdivia-Mera, Bhavay Tyagi, Eric R. Bittner, and Pavan Hosur}
+  {arXiv preprint}
+  {arXiv:2606.17161 (2026)}
+  {\href{https://arxiv.org/abs/2606.17161}{arXiv}}
+
+  \publication
+  {Thermal nature of the causal diamond horizon: A hidden property of the inertial propagator}
+  {Nada Eissa, Carlos R. Ordóñez, and Gustavo Valdivia-Mera}
+  {Physical Review D}
+  {112, 125008 (2025)}
+  {\href{https://journals.aps.org/prd/abstract/10.1103/PhysRevD.112.125008}{Journal} \;|\; \href{https://arxiv.org/abs/2508.16880}{arXiv}}
+
+  \publication
+  {Horizon brightened acceleration radiation entropy in causal diamond geometry: A near-horizon perspective}
+  {Nada Eissa, Carlos R. Ordóñez, and Gustavo Valdivia-Mera}
+  {Physical Review D}
+  {112, 085030 (2025)}
+  {\href{https://journals.aps.org/prd/abstract/10.1103/PhysRevD.112.085030}{Journal} \;|\; \href{https://arxiv.org/abs/2508.13493}{arXiv}}
+
+  \publication
+  {Path integral derivation of the thermofield double state in causal diamonds}
+  {Abhijit Chakraborty, Carlos R. Ordóñez, and Gustavo Valdivia-Mera}
+  {Classical and Quantum Gravity}
+  {42, 025015 (2025)}
+  {\href{https://iopscience.iop.org/article/10.1088/1361-6382/ad9e65}{Journal} \;|\; \href{https://arxiv.org/abs/2312.03541}{arXiv}}
+
+  \publication
+  {On the Unruh effect and the thermofield double state}
+  {Gustavo Valdivia-Mera}
+  {International Journal of Modern Physics D}
+  {34, 2530002 (2025)}
+  {\href{https://www.worldscientific.com/doi/10.1142/S0218271825300022}{Journal} \;|\; \href{https://arxiv.org/abs/2001.09869}{arXiv}}
+\end{itemize}
+
+\newpage
+\section{Selected Presentations}
+
+\talk{Strange Metals and Black Holes: A Holographic Correspondence}{March 2026}
+{Research Day, Department of Physics, University of Houston, Houston, TX}
+
+\talk{Thermal Nature of the Causal Diamond Horizon}{February 2026}
+{TINKUY 2026: ``Un Panorama de la Física Teórica en el Perú'', Lima, Peru}
+
+\talk{Towards HBAR in the causal diamond near horizon}{July 2025}
+{IQSE Summer School on Quantum Science, Texas A\&M University, Casper, WY}
+
+\talk{Near-horizon (conformal) aspects of black holes and the universality of HBAR entropy}{April 2025}
+{AMO/IQSE Seminar, Texas A\&M University, College Station, TX}
+
+\talk{Path integral derivation of the thermofield double state in causal diamonds}{March 2025}
+{APS Global Physics Summit, Anaheim, CA}
+
+\talk{Quantum Algorithms I \& II}{August 2023}
+{Quantum Scholars Program, QuantumQuipu, online}
+
+\talk{Bounds on eV-scale sterile neutrinos from neutrinoless double-beta decay}{June 2023}
+{Summer School on Particle Physics, ICTP, Trieste, Italy}
+
+\section{Teaching Experience}
+
+\entry{University of Houston}{2023--2025}
+{Teaching Assistant}{Houston, TX}
+\begin{itemize}
+  \item Quantum Mechanics, undergraduate course \hfill Fall 2025
+  \item Quantum Mechanics II, graduate course \hfill Spring 2025
+  \item Physics Laboratory, undergraduate course \hfill Fall 2023
+\end{itemize}
+
+\entry{TECSUP}{2018}
+{Instructor, General Physics}{Lima, Peru}
+
+\section{Awards and Honors}
+
+\begin{itemize}
+  \item Student Ambassador, American Physical Society (APS) \hfill 2026--2027
+  \item Lydia Mendoza Fellowship, University of Houston \hfill 2024--2026
+  \item Presidential Fellowship, University of Houston \hfill 2023--2025
+  \item 1st Place, Quantum Computing Fall Fest, University of Houston \hfill 2023
+  \item Research Scholarship, UNMSM Vice-Chancellor's Office \hfill 2018
+\end{itemize}
+
+\section{Technical Skills}
+
+Python; Fortran; Mathematica; \LaTeX.
+
+\end{document}
