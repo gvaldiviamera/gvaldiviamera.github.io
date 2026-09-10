@@ -221,14 +221,16 @@
       padding-top: 0;
     }
 
-    .research-tabs {
+    .research-tabs,
+    .resource-tabs {
       border-bottom: 1px solid var(--border);
       display: flex;
       gap: 18px;
       margin: 18px 0 18px;
     }
 
-    .research-tab {
+    .research-tab,
+    .resource-tab {
       appearance: none;
       background: transparent;
       border: 0;
@@ -240,16 +242,19 @@
       padding: 0 0 7px;
     }
 
-    .research-tab.active {
+    .research-tab.active,
+    .resource-tab.active {
       border-bottom-color: var(--accent);
       color: var(--accent);
     }
 
-    .research-panel {
+    .research-panel,
+    .resource-panel {
       display: none;
     }
 
-    .research-panel.active {
+    .research-panel.active,
+    .resource-panel.active {
       display: block;
     }
 
@@ -359,7 +364,7 @@
         <div class="nav-buttons">
           <button class="nav-button active" type="button" data-target="home">Home</button>
           <button class="nav-button" type="button" data-target="research">Research</button>
-          <button class="nav-button" type="button" data-target="lecture-notes">Lecture Notes</button>
+          <button class="nav-button" type="button" data-target="physics-resources">Theoretical Physics Resources</button>
           <button class="nav-button" type="button" data-target="elsewhere">Elsewhere</button>
           <button class="nav-button" type="button" data-target="cv">CV</button>
         </div>
@@ -544,38 +549,21 @@
       </div>
     </section>
 
-    <section id="lecture-notes" class="section">
-      <h1 class="section-title">Lecture Notes</h1>
+    <section id="physics-resources" class="section">
+      <h1 class="section-title">Theoretical Physics Resources</h1>
       <p>
-        These lecture-style notes are informal manuscripts on topics related to my research interests. They are updated periodically. If you find typos or have comments, please feel free to contact me.
+        These resources include lecture-style notes and structured study programs on selected topics in theoretical physics. They are updated periodically and have been prepared with the help of online resources and artificial intelligence tools, which I use as aids for organization, drafting, and refinement. If you find typos or have comments, please contact me at aremaividlav@gmail.com.
       </p>
 
-      <div class="notes-topic">
-        <h3>Black Hole Thermodynamics</h3>
-        <ul class="notes-list">
-          <li>Notes will be added soon.</li>
-        </ul>
+      <div class="resource-tabs" role="tablist" aria-label="Theoretical physics resource categories">
+        <button class="resource-tab active" type="button" data-resource-tab="lecture-notes">Lecture Notes</button>
+        <button class="resource-tab" type="button" data-resource-tab="study-programs">Study Programs</button>
       </div>
 
-      <div class="notes-topic">
-        <h3>The SYK Model</h3>
-        <ul class="notes-list">
-          <li>Notes will be added soon.</li>
-        </ul>
+      <div id="lecture-notes-panel" class="resource-panel active">
       </div>
 
-      <div class="notes-topic">
-        <h3>The Holographic Principle</h3>
-        <ul class="notes-list">
-          <li>Notes will be added soon.</li>
-        </ul>
-      </div>
-
-      <div class="notes-topic">
-        <h3>Topology in Condensed Matter</h3>
-        <ul class="notes-list">
-          <li>Notes will be added soon.</li>
-        </ul>
+      <div id="study-programs-panel" class="resource-panel">
       </div>
     </section>
 
@@ -610,6 +598,11 @@
     const sections = document.querySelectorAll('.section');
     const researchTabs = document.querySelectorAll('.research-tab');
     const researchPanels = document.querySelectorAll('.research-panel');
+    const resourceTabs = document.querySelectorAll('.resource-tab');
+    const resourcePanels = document.querySelectorAll('.resource-panel');
+    const sectionAliases = {
+      'lecture-notes': 'physics-resources'
+    };
 
     function setActiveResearchTab(tabId) {
       researchTabs.forEach(tab => {
@@ -621,8 +614,19 @@
       });
     }
 
+    function setActiveResourceTab(tabId) {
+      resourceTabs.forEach(tab => {
+        tab.classList.toggle('active', tab.dataset.resourceTab === tabId);
+      });
+
+      resourcePanels.forEach(panel => {
+        panel.classList.toggle('active', panel.id === tabId + '-panel');
+      });
+    }
+
     function setActiveSection(sectionId) {
-      const targetId = document.getElementById(sectionId) ? sectionId : 'home';
+      const requestedId = sectionAliases[sectionId] || sectionId;
+      const targetId = document.getElementById(requestedId) ? requestedId : 'home';
 
       buttons.forEach(button => {
         button.classList.toggle('active', button.dataset.target === targetId);
@@ -645,6 +649,12 @@
     researchTabs.forEach(tab => {
       tab.addEventListener('click', () => {
         setActiveResearchTab(tab.dataset.researchTab);
+      });
+    });
+
+    resourceTabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        setActiveResourceTab(tab.dataset.resourceTab);
       });
     });
 
