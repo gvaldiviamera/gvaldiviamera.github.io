@@ -342,14 +342,18 @@
       column-gap: 12px;
     }
 
+    .gallery-entry {
+      break-inside: avoid;
+      margin: 0 0 16px;
+    }
+
     .gallery-item {
       appearance: none;
       background: transparent;
       border: 0;
-      break-inside: avoid;
       cursor: zoom-in;
       display: block;
-      margin: 0 0 12px;
+      margin: 0;
       padding: 0;
       width: 100%;
     }
@@ -370,6 +374,13 @@
     .gallery-item:focus-visible {
       outline: 2px solid var(--accent);
       outline-offset: 3px;
+    }
+
+    .gallery-entry figcaption {
+      color: var(--text-muted);
+      font-size: 0.84rem;
+      line-height: 1.45;
+      margin-top: 6px;
     }
 
     .gallery-lightbox {
@@ -724,24 +735,42 @@
 
       <div id="elsewhere-photographs-panel" class="elsewhere-panel active">
         <div class="photo-gallery" aria-label="Personal photograph gallery">
-          <button class="gallery-item" type="button" data-full="images/gallery/full/trieste.jpg">
-            <img src="images/gallery/thumbs/trieste.jpg" width="800" height="600" loading="lazy" decoding="async" alt="Gustavo Valdivia-Mera at a marina in Trieste">
-          </button>
-          <button class="gallery-item" type="button" data-full="images/gallery/full/waterfall.jpg">
-            <img src="images/gallery/thumbs/waterfall.jpg" width="600" height="800" loading="lazy" decoding="async" alt="Gustavo Valdivia-Mera by a waterfall">
-          </button>
-          <button class="gallery-item" type="button" data-full="images/gallery/full/family.jpg">
-            <img src="images/gallery/thumbs/family.jpg" width="600" height="800" loading="lazy" decoding="async" alt="Two people seated together outdoors">
-          </button>
-          <button class="gallery-item" type="button" data-full="images/gallery/full/mountains.jpg">
-            <img src="images/gallery/thumbs/mountains.jpg" width="600" height="800" loading="lazy" decoding="async" alt="Gustavo Valdivia-Mera on a rocky trail in a forest">
-          </button>
-          <button class="gallery-item" type="button" data-full="images/gallery/full/marlan-scully.jpg">
-            <img src="images/gallery/thumbs/marlan-scully.jpg" width="600" height="800" loading="lazy" decoding="async" alt="Gustavo Valdivia-Mera with Marlan Scully">
-          </button>
-          <button class="gallery-item" type="button" data-full="images/gallery/full/chile.jpg">
-            <img src="images/gallery/thumbs/chile.jpg" width="600" height="800" loading="lazy" decoding="async" alt="Gustavo Valdivia-Mera beside a garden pond in Chile">
-          </button>
+          <figure class="gallery-entry">
+            <button class="gallery-item" type="button" data-full="images/gallery/full/trieste.jpg">
+              <img src="images/gallery/thumbs/trieste.jpg" width="800" height="600" loading="lazy" decoding="async" alt="Gustavo Valdivia-Mera at a marina in Trieste">
+            </button>
+            <figcaption>ICTP, Trieste, Italy, 2023. Summer School on Particle Physics.</figcaption>
+          </figure>
+          <figure class="gallery-entry">
+            <button class="gallery-item" type="button" data-full="images/gallery/full/waterfall.jpg">
+              <img src="images/gallery/thumbs/waterfall.jpg" width="600" height="800" loading="lazy" decoding="async" alt="Gustavo Valdivia-Mera by a waterfall in Casper, Wyoming">
+            </button>
+            <figcaption>Casper, Wyoming, 2025. IQSE Summer School on Quantum Science.</figcaption>
+          </figure>
+          <figure class="gallery-entry">
+            <button class="gallery-item" type="button" data-full="images/gallery/full/family.jpg">
+              <img src="images/gallery/thumbs/family.jpg" width="600" height="800" loading="lazy" decoding="async" alt="Gustavo Valdivia-Mera's parents seated together outdoors">
+            </button>
+            <figcaption>Lima, Peru, 2024. My parents.</figcaption>
+          </figure>
+          <figure class="gallery-entry">
+            <button class="gallery-item" type="button" data-full="images/gallery/full/mountains.jpg">
+              <img src="images/gallery/thumbs/mountains.jpg" width="600" height="800" loading="lazy" decoding="async" alt="Gustavo Valdivia-Mera on a rocky trail in Casper, Wyoming">
+            </button>
+            <figcaption>Casper, Wyoming, 2025. IQSE Summer School on Quantum Science.</figcaption>
+          </figure>
+          <figure class="gallery-entry">
+            <button class="gallery-item" type="button" data-full="images/gallery/full/marlan-scully.jpg">
+              <img src="images/gallery/thumbs/marlan-scully.jpg" width="600" height="800" loading="lazy" decoding="async" alt="Gustavo Valdivia-Mera with Professor Marlan O. Scully">
+            </button>
+            <figcaption>Texas A&amp;M University, 2025. With Professor Marlan O. Scully after my AMO/IQSE seminar.</figcaption>
+          </figure>
+          <figure class="gallery-entry">
+            <button class="gallery-item" type="button" data-full="images/gallery/full/chile.jpg">
+              <img src="images/gallery/thumbs/chile.jpg" width="600" height="800" loading="lazy" decoding="async" alt="Gustavo Valdivia-Mera beside Laguna Los Lotos in Valdivia, Chile">
+            </button>
+            <figcaption>Laguna Los Lotos, Parque Saval, Valdivia, Chile, 2018.</figcaption>
+          </figure>
         </div>
       </div>
 
