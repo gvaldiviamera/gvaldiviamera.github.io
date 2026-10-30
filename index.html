@@ -328,6 +328,89 @@
       margin-bottom: 4px;
     }
 
+    .gallery-heading {
+      font-size: 1.05rem;
+      font-weight: 600;
+      margin: 28px 0 12px;
+    }
+
+    .photo-gallery {
+      column-count: 3;
+      column-gap: 12px;
+    }
+
+    .gallery-item {
+      appearance: none;
+      background: transparent;
+      border: 0;
+      break-inside: avoid;
+      cursor: zoom-in;
+      display: block;
+      margin: 0 0 12px;
+      padding: 0;
+      width: 100%;
+    }
+
+    .gallery-item img {
+      border-radius: 3px;
+      display: block;
+      height: auto;
+      transition: opacity 150ms ease;
+      width: 100%;
+    }
+
+    .gallery-item:hover img,
+    .gallery-item:focus-visible img {
+      opacity: 0.86;
+    }
+
+    .gallery-item:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 3px;
+    }
+
+    .gallery-lightbox {
+      background: transparent;
+      border: 0;
+      height: 100vh;
+      max-height: none;
+      max-width: none;
+      padding: 40px;
+      width: 100vw;
+    }
+
+    .gallery-lightbox[open] {
+      align-items: center;
+      display: flex;
+      justify-content: center;
+    }
+
+    .gallery-lightbox::backdrop {
+      background: rgba(0, 0, 0, 0.88);
+    }
+
+    .gallery-lightbox img {
+      display: block;
+      max-height: calc(100vh - 80px);
+      max-width: calc(100vw - 80px);
+      object-fit: contain;
+    }
+
+    .gallery-lightbox-close {
+      background: rgba(0, 0, 0, 0.55);
+      border: 1px solid rgba(255, 255, 255, 0.65);
+      border-radius: 50%;
+      color: #fff;
+      cursor: pointer;
+      font-size: 1.45rem;
+      height: 38px;
+      line-height: 1;
+      position: fixed;
+      right: 18px;
+      top: 18px;
+      width: 38px;
+    }
+
     .cv-frame {
       background: var(--surface);
       border: 1px solid var(--border);
@@ -368,6 +451,25 @@
 
       main {
         padding-top: 28px;
+      }
+
+      .photo-gallery {
+        column-count: 2;
+      }
+
+      .gallery-lightbox {
+        padding: 18px;
+      }
+
+      .gallery-lightbox img {
+        max-height: calc(100vh - 36px);
+        max-width: calc(100vw - 36px);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .photo-gallery {
+        column-count: 1;
       }
     }
   </style>
@@ -569,7 +671,7 @@
     <section id="physics-resources" class="section">
       <h1 class="section-title">Theoretical Physics Resources</h1>
       <p>
-        These resources include lecture-style notes and structured study programs on selected topics in theoretical physics. They are updated periodically and have been prepared with the help of online resources and artificial intelligence tools, which I use as aids for organization, drafting, and refinement. If you find typos or have comments, please contact me at aremaividlav@gmail.com.
+        These resources include lecture-style notes and structured study programs on selected topics in theoretical physics. They are updated periodically. If you find typos or have comments, please contact me at aremaividlav@gmail.com.
       </p>
 
       <div class="resource-tabs" role="tablist" aria-label="Theoretical physics resource categories">
@@ -607,7 +709,36 @@
 
     <section id="elsewhere" class="section">
       <h1 class="section-title">Elsewhere</h1>
-      <p>This section is under construction.</p>
+      <p>
+        Elsewhere is a collection of personal projects, photographs, notes, and guides on subjects beyond physics.
+      </p>
+
+      <h2 class="gallery-heading">Photographs</h2>
+      <div class="photo-gallery" aria-label="Personal photograph gallery">
+        <button class="gallery-item" type="button" data-full="images/gallery/full/trieste.jpg">
+          <img src="images/gallery/thumbs/trieste.jpg" width="800" height="600" loading="lazy" decoding="async" alt="Gustavo Valdivia-Mera at a marina in Trieste">
+        </button>
+        <button class="gallery-item" type="button" data-full="images/gallery/full/waterfall.jpg">
+          <img src="images/gallery/thumbs/waterfall.jpg" width="600" height="800" loading="lazy" decoding="async" alt="Gustavo Valdivia-Mera by a waterfall">
+        </button>
+        <button class="gallery-item" type="button" data-full="images/gallery/full/family.jpg">
+          <img src="images/gallery/thumbs/family.jpg" width="600" height="800" loading="lazy" decoding="async" alt="Two people seated together outdoors">
+        </button>
+        <button class="gallery-item" type="button" data-full="images/gallery/full/mountains.jpg">
+          <img src="images/gallery/thumbs/mountains.jpg" width="600" height="800" loading="lazy" decoding="async" alt="Gustavo Valdivia-Mera on a rocky trail in a forest">
+        </button>
+        <button class="gallery-item" type="button" data-full="images/gallery/full/marlan-scully.jpg">
+          <img src="images/gallery/thumbs/marlan-scully.jpg" width="600" height="800" loading="lazy" decoding="async" alt="Gustavo Valdivia-Mera with Marlan Scully">
+        </button>
+        <button class="gallery-item" type="button" data-full="images/gallery/full/chile.jpg">
+          <img src="images/gallery/thumbs/chile.jpg" width="600" height="800" loading="lazy" decoding="async" alt="Gustavo Valdivia-Mera beside a garden pond in Chile">
+        </button>
+      </div>
+
+      <dialog id="gallery-lightbox" class="gallery-lightbox" aria-label="Expanded photograph">
+        <button id="gallery-lightbox-close" class="gallery-lightbox-close" type="button" aria-label="Close photograph">&times;</button>
+        <img id="gallery-lightbox-image" src="" alt="">
+      </dialog>
     </section>
 
     <section id="cv" class="section">
@@ -628,7 +759,7 @@
   </main>
 
   <footer>
-    Last update: September 2026
+    Last update: October 2026
   </footer>
 
   <script>
@@ -638,6 +769,10 @@
     const researchPanels = document.querySelectorAll('.research-panel');
     const resourceTabs = document.querySelectorAll('.resource-tab');
     const resourcePanels = document.querySelectorAll('.resource-panel');
+    const galleryItems = document.querySelectorAll('.gallery-item');
+    const galleryLightbox = document.getElementById('gallery-lightbox');
+    const galleryLightboxImage = document.getElementById('gallery-lightbox-image');
+    const galleryLightboxClose = document.getElementById('gallery-lightbox-close');
     const sectionAliases = {
       'lecture-notes': 'physics-resources'
     };
@@ -694,6 +829,35 @@
       tab.addEventListener('click', () => {
         setActiveResourceTab(tab.dataset.resourceTab);
       });
+    });
+
+    galleryItems.forEach(item => {
+      item.addEventListener('click', () => {
+        const thumbnail = item.querySelector('img');
+        galleryLightboxImage.src = item.dataset.full;
+        galleryLightboxImage.alt = thumbnail.alt;
+
+        if (typeof galleryLightbox.showModal === 'function') {
+          galleryLightbox.showModal();
+        } else {
+          window.open(item.dataset.full, '_blank', 'noopener');
+        }
+      });
+    });
+
+    galleryLightboxClose.addEventListener('click', () => {
+      galleryLightbox.close();
+    });
+
+    galleryLightbox.addEventListener('click', event => {
+      if (event.target === galleryLightbox) {
+        galleryLightbox.close();
+      }
+    });
+
+    galleryLightbox.addEventListener('close', () => {
+      galleryLightboxImage.src = '';
+      galleryLightboxImage.alt = '';
     });
 
     window.addEventListener('hashchange', () => {
