@@ -222,15 +222,21 @@
     }
 
     .research-tabs,
-    .resource-tabs {
+    .resource-tabs,
+    .elsewhere-tabs {
       border-bottom: 1px solid var(--border);
       display: flex;
       gap: 18px;
       margin: 18px 0 18px;
     }
 
+    .elsewhere-tabs {
+      flex-wrap: wrap;
+    }
+
     .research-tab,
-    .resource-tab {
+    .resource-tab,
+    .elsewhere-tab {
       appearance: none;
       background: transparent;
       border: 0;
@@ -243,18 +249,21 @@
     }
 
     .research-tab.active,
-    .resource-tab.active {
+    .resource-tab.active,
+    .elsewhere-tab.active {
       border-bottom-color: var(--accent);
       color: var(--accent);
     }
 
     .research-panel,
-    .resource-panel {
+    .resource-panel,
+    .elsewhere-panel {
       display: none;
     }
 
     .research-panel.active,
-    .resource-panel.active {
+    .resource-panel.active,
+    .elsewhere-panel.active {
       display: block;
     }
 
@@ -326,12 +335,6 @@
       font-size: 1rem;
       font-weight: 600;
       margin-bottom: 4px;
-    }
-
-    .gallery-heading {
-      font-size: 1.05rem;
-      font-weight: 600;
-      margin: 28px 0 12px;
     }
 
     .photo-gallery {
@@ -713,26 +716,39 @@
         Elsewhere is a collection of personal projects, photographs, notes, and guides on subjects beyond physics.
       </p>
 
-      <h2 class="gallery-heading">Photographs</h2>
-      <div class="photo-gallery" aria-label="Personal photograph gallery">
-        <button class="gallery-item" type="button" data-full="images/gallery/full/trieste.jpg">
-          <img src="images/gallery/thumbs/trieste.jpg" width="800" height="600" loading="lazy" decoding="async" alt="Gustavo Valdivia-Mera at a marina in Trieste">
-        </button>
-        <button class="gallery-item" type="button" data-full="images/gallery/full/waterfall.jpg">
-          <img src="images/gallery/thumbs/waterfall.jpg" width="600" height="800" loading="lazy" decoding="async" alt="Gustavo Valdivia-Mera by a waterfall">
-        </button>
-        <button class="gallery-item" type="button" data-full="images/gallery/full/family.jpg">
-          <img src="images/gallery/thumbs/family.jpg" width="600" height="800" loading="lazy" decoding="async" alt="Two people seated together outdoors">
-        </button>
-        <button class="gallery-item" type="button" data-full="images/gallery/full/mountains.jpg">
-          <img src="images/gallery/thumbs/mountains.jpg" width="600" height="800" loading="lazy" decoding="async" alt="Gustavo Valdivia-Mera on a rocky trail in a forest">
-        </button>
-        <button class="gallery-item" type="button" data-full="images/gallery/full/marlan-scully.jpg">
-          <img src="images/gallery/thumbs/marlan-scully.jpg" width="600" height="800" loading="lazy" decoding="async" alt="Gustavo Valdivia-Mera with Marlan Scully">
-        </button>
-        <button class="gallery-item" type="button" data-full="images/gallery/full/chile.jpg">
-          <img src="images/gallery/thumbs/chile.jpg" width="600" height="800" loading="lazy" decoding="async" alt="Gustavo Valdivia-Mera beside a garden pond in Chile">
-        </button>
+      <div class="elsewhere-tabs" role="tablist" aria-label="Elsewhere categories">
+        <button class="elsewhere-tab active" type="button" data-elsewhere-tab="photographs">Photographs</button>
+        <button class="elsewhere-tab" type="button" data-elsewhere-tab="guides">Guides</button>
+        <button class="elsewhere-tab" type="button" data-elsewhere-tab="notes-essays">Notes &amp; Essays</button>
+      </div>
+
+      <div id="elsewhere-photographs-panel" class="elsewhere-panel active">
+        <div class="photo-gallery" aria-label="Personal photograph gallery">
+          <button class="gallery-item" type="button" data-full="images/gallery/full/trieste.jpg">
+            <img src="images/gallery/thumbs/trieste.jpg" width="800" height="600" loading="lazy" decoding="async" alt="Gustavo Valdivia-Mera at a marina in Trieste">
+          </button>
+          <button class="gallery-item" type="button" data-full="images/gallery/full/waterfall.jpg">
+            <img src="images/gallery/thumbs/waterfall.jpg" width="600" height="800" loading="lazy" decoding="async" alt="Gustavo Valdivia-Mera by a waterfall">
+          </button>
+          <button class="gallery-item" type="button" data-full="images/gallery/full/family.jpg">
+            <img src="images/gallery/thumbs/family.jpg" width="600" height="800" loading="lazy" decoding="async" alt="Two people seated together outdoors">
+          </button>
+          <button class="gallery-item" type="button" data-full="images/gallery/full/mountains.jpg">
+            <img src="images/gallery/thumbs/mountains.jpg" width="600" height="800" loading="lazy" decoding="async" alt="Gustavo Valdivia-Mera on a rocky trail in a forest">
+          </button>
+          <button class="gallery-item" type="button" data-full="images/gallery/full/marlan-scully.jpg">
+            <img src="images/gallery/thumbs/marlan-scully.jpg" width="600" height="800" loading="lazy" decoding="async" alt="Gustavo Valdivia-Mera with Marlan Scully">
+          </button>
+          <button class="gallery-item" type="button" data-full="images/gallery/full/chile.jpg">
+            <img src="images/gallery/thumbs/chile.jpg" width="600" height="800" loading="lazy" decoding="async" alt="Gustavo Valdivia-Mera beside a garden pond in Chile">
+          </button>
+        </div>
+      </div>
+
+      <div id="elsewhere-guides-panel" class="elsewhere-panel">
+      </div>
+
+      <div id="elsewhere-notes-essays-panel" class="elsewhere-panel">
       </div>
 
       <dialog id="gallery-lightbox" class="gallery-lightbox" aria-label="Expanded photograph">
@@ -769,6 +785,8 @@
     const researchPanels = document.querySelectorAll('.research-panel');
     const resourceTabs = document.querySelectorAll('.resource-tab');
     const resourcePanels = document.querySelectorAll('.resource-panel');
+    const elsewhereTabs = document.querySelectorAll('.elsewhere-tab');
+    const elsewherePanels = document.querySelectorAll('.elsewhere-panel');
     const galleryItems = document.querySelectorAll('.gallery-item');
     const galleryLightbox = document.getElementById('gallery-lightbox');
     const galleryLightboxImage = document.getElementById('gallery-lightbox-image');
@@ -794,6 +812,16 @@
 
       resourcePanels.forEach(panel => {
         panel.classList.toggle('active', panel.id === tabId + '-panel');
+      });
+    }
+
+    function setActiveElsewhereTab(tabId) {
+      elsewhereTabs.forEach(tab => {
+        tab.classList.toggle('active', tab.dataset.elsewhereTab === tabId);
+      });
+
+      elsewherePanels.forEach(panel => {
+        panel.classList.toggle('active', panel.id === 'elsewhere-' + tabId + '-panel');
       });
     }
 
@@ -828,6 +856,12 @@
     resourceTabs.forEach(tab => {
       tab.addEventListener('click', () => {
         setActiveResourceTab(tab.dataset.resourceTab);
+      });
+    });
+
+    elsewhereTabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        setActiveElsewhereTab(tab.dataset.elsewhereTab);
       });
     });
 
